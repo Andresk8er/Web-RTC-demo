@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cognigy WebRTC Demo</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f6f8;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 16px 26px;
+      border-radius: 10px;
+      background: #0052cc;
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(0,0,0,.2);
+    }
+  </style>
+</head>
+<body>
+
+<button id="callBtn">📞 Start Voice Demo</button>
+
+<script>
+  let started = false;
+
+  document.getElementById("callBtn").addEventListener("click", () => {
+    if (started) return;
+    started = true;
+
+    const s = document.createElement("script");
+    s.src = "https://github.com/Cognigy/WebRTCWidget/releases/latest/download/webRTCWidget.js";
+    s.onload = () => {
+      window.initWebRTCWidget(
+        "https://endpoint-trial-us.cognigy.ai/887efb143cf4281399fab80948ee3c4086999b08e20ae35acb8e496d71d74a20"
+      );
+    };
+    document.body.appendChild(s);
+  });
+</script>
+
+</body>
+</html>
